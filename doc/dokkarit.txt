@@ -1,0 +1,23 @@
+Johdanto
+
+Tehd채채n keskustelufoorumipohja. Foorumipohjalla tulee voida luoda foorumeita erilaisiin k채ytt철tarkoituksiin mahdollistamalla keskustelujen j채rjest채misen eri aiheisiin. Pohjalla mahdollistetaan eri foorumeiden luominen helposti. Foorumissa tulee olemaan k채ytt채ji채, joiden tulee kirjautua j채rjestelm채채n voidakseen lukea ja kirjoittaa keskusteluihin. K채ytt채j채 voi aloittaa keskusteluja tai kommentoida keskusteluihin. Foorumi tukee myos aiheryhmia, joita kayttaja voi tilata.
+
+Pohja tehd채채n laitoksen palvelimelle k채ytt채en PHP-kielt채. Tietokantana toimii PostGRES-kanta.
+
+
+K홿tt홭ryhm홺
+  K홿tt홭채  Rekisteroitynyt kayttaja
+  Moderaattori   Rekisteroitynyt kayttaja, jolle annettu yllapitajan oikeudet
+
+Kayttotapaukset
+
+	1. K채ytt채j채n채 haluan voida aloittaa keskuuja
+
+	2. K채ytt채j채n채 haluan komment keskusteluja
+
+	3. Moderaattorina haluan muokata tai poistaa keskusteluja ja kommentteja
+
+	4. K채ytt채j채n haluan liitty채 ja poistua aiheryhmist채
+
+        5. Moderaattorina haluan voida lisata kayttajia moderaattoriksi
+
