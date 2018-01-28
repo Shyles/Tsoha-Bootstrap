@@ -5,7 +5,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 source $DIR/config/environment.sh
 
-echo "Siirretään tiedostot users-palvelimelle..."
+echo "Siirretään tiedostot users-palvelimelle tiedostoon ${PRJECT_FOLDER}"
 
 # Tämä komento siirtää tiedostot palvelimelta
 rsync -z -r $DIR/app $DIR/assets $DIR/config $DIR/lib $DIR/sql $DIR/index.php $DIR/composer.json $USERNAME@users2017.cs.helsinki.fi:htdocs/$PROJECT_FOLDER
