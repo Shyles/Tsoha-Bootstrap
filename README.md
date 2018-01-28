@@ -3,11 +3,12 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://laol.users.cs.helsinki.fi/tsoha)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki viikon 1 dokumentointeihin](https://github.com/Shyles/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
+* [Linkki viikon 2 dokumentointeihin (yhdistetään lopullisesti valmistuessa)](https://github.com/Shyles/Tsoha-Bootstrap/blob/master/doc/QuickDBD-Tsoha.png
+)
 * [Linkki keskusteluihin](http://laol.users.cs.helsinki.fi/tsoha/discussion)
 * [Linkki aiheisiin](http://laol.users.cs.helsinki.fi/tsoha/category)
 * [Linkki kirjautumissivulle](http://laol.users.cs.helsinki.fi/tsoha/login)
-
 
 ## Työn aihe
 
