@@ -4,6 +4,11 @@ Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://laol.users.cs.helsinki.fi/tsoha)
 * [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki kommentteihin](http://laol.users.cs.helsinki.fi/tsoha/comment)
+* [Linkki keskusteluihin](http://laol.users.cs.helsinki.fi/tsoha/discussion)
+* [Linkki aiheisiin](http://laol.users.cs.helsinki.fi/tsoha/category)
+* [Linkki kirjautumissivulle](http://laol.users.cs.helsinki.fi/tsoha/login)
+
 
 ## Työn aihe
 

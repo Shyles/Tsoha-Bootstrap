@@ -1,24 +1,29 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    MainController::index();
   });
   
   $routes->get('/category', function() {
-      CategoryController::index();
+      MainController::category();
   });
   
-    
-  $routes->get('/discussion', function() {
-    DiscussionController::index();
+    $routes->get('/reader', function() {
+    MainController::reader();
   });
 
-  
-    
+  $routes->get('/discussion', function() {
+      MainController::discussion();
+  });
+
+    $routes->get('/login', function() {
+    MainController::login();
+  });
+
   $routes->get('/comment', function() {
-    CommentController::index();
+      MainController::comment();
   });
 
   $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+      MainController::sandbox();
   });
