@@ -11,4 +11,12 @@ INSERT INTO Discussion (published) VALUES (NOW());
 
 -- Comments
 INSERT INTO Comment (comment, published) VALUES ('lorem ipsum popsum possuseni ptrui ptrui', NOW());
+<<<<<<< HEAD
+=======
+INSERT INTO Comment (comment, published) VALUES ('lorem ipsum popsum possuseni ptrui ptrui', NOW());
+INSERT INTO Comment (comment, published) VALUES ('lorem ipsum popsum possuseni ptrui ptrui', NOW());
+INSERT INTO Comment (comment, published) VALUES ('lorem ipsum popsum possuseni ptrui ptrui', NOW());
+INSERT INTO Comment (comment, published) VALUES ('lorem ipsum popsum possuseni ptrui ptrui', NOW());
+
+>>>>>>> kaikki tähän mennessä
 

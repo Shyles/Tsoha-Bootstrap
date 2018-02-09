@@ -8,8 +8,17 @@
       MainController::category();
   });
   
+<<<<<<< HEAD
     $routes->get('/reader', function() {
     MainController::reader();
+=======
+  $routes->get('/reader', function() {
+    ReaderController::index();
+  });
+
+  $routes->get('/reader/:id', function($id) {
+    ReaderController::show($id);
+>>>>>>> kaikki tähän mennessä
   });
 
   $routes->get('/discussion', function() {

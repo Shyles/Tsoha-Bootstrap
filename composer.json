@@ -3,7 +3,12 @@
 		"classmap": [
 			"config/database.php",
 			"lib",
+<<<<<<< HEAD
 			"app/controllers"
+=======
+			"app/controllers",
+                         "app/models"
+>>>>>>> kaikki tähän mennessä
 		]
 	},
 	"require": {
