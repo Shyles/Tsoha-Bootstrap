@@ -18,17 +18,23 @@ class ReaderController extends BaseController{
     
     public static function store() {
         $params = $_POST;
-        $reader = new Reader(array(
-            'password' => isset($params['password']) ? $params['password'] : 'wololoo',
-            'first_name' => $params['first_name'],
-            'last_name' => $params['last_name'],
-            'moderator' => isset($params['moderator']) ? $params('moderator') : false,
-            'e_mail' => $params['e_mail'],
-            'user_name' => $params['user_name']
-        ));
-
-        $reader->save();
-        Redirect::to('/reader/' . $reader->id , array('message' => 'käyttäjä ' . $reader->user_name . ' on lisätty kantaan'));
+        $attributes = array(
+        'password' => isset($params['password']) ? $params['password'] : 'wololoo',
+        'first_name' => $params['first_name'],
+        'last_name' => $params['last_name'],
+        'moderator' => isset($params['moderator']) ? $params('moderator') : false,
+        'e_mail' => $params['e_mail'],
+        'user_name' => $params['user_name']);
+        
+        $reader = new Reader($attributes);
+        //$validator_errors = $reader->errors();
+        //if (count($validator_errors) == 0) {
+            $reader->save();
+            Redirect::to('/reader/' . $reader->id, array('message' => 'käyttäjä ' . $reader->user_name . ' on lisätty kantaan'));
+        //} else {
+        //    View::make('reader/new.html', array('errors' => $validator_errors, 'attributes' => $attributes));
+        //}
+        
     }
     
     public static function show($id) {

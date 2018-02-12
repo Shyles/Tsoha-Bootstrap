@@ -30,7 +30,17 @@
     }
 
     public static function sandbox(){
-      // Testaa koodiasi täällä
-        View::make('helloworld.html');
+
+        $reader = new Reader(array(
+            'user_name' => 'D',
+            'first_name' => 's',
+            'last_name' => 'u',
+            'e_mail' => 'j',
+        ));
+        $errors = $reader->errors();
+
+        Kint::dump($errors);
+       // $errors = $reader->errors();
+
     }
   }

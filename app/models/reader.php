@@ -1,16 +1,34 @@
 <?php
 
-class Reader extends BaseModel
-{
+class Reader extends BaseModel{
     public $id, $password, $first_name, $last_name, $moderator, $e_mail, $user_name;
 
-    public function _construct($attributes)
-    {
-        parent::_construct($attributes);
+    public function _construct($attributes) {
+        $validators = array('validate_first_name', 'validate_last_name', 'validate_user_name', 'validate_e_mail', 'validate_password');
+        parent::_construct($attributes, $validators);
+    }
+    
+    public function validate_first_name() {
+        return $this->validate_string_length($this->first_name, 3, 20);
     }
 
-    public static function all()
-    {
+    public function validate_last_name() {
+        return $this->validate_string_length($this->last_name, 3, 20);
+    }
+
+    public function validate_user_name() {
+        return $this->validate_string_length($this->user_name, 3, 20);
+    }
+    
+    public function validate_e_mail() {
+        return $this->validate_string_length($this->first_name, 3, 20);
+    }
+    
+    public function validate_password() {
+        return $this->validate_string_length($this->first_name, 3, 20);
+    }
+
+    public static function all() {
         $query = DB::connection()->prepare('SELECT * FROM Reader');
         $query->execute();
         $rows = $query->fetchAll();
@@ -30,8 +48,7 @@ class Reader extends BaseModel
         return $readers;
     }
 
-    public static function find($id)
-    {
+    public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Reader WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
@@ -82,5 +99,4 @@ class Reader extends BaseModel
             return null;
         }
     }
-
 }

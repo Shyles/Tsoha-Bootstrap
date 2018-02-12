@@ -42,16 +42,21 @@
             <!-- Navigaation linkit -->
             <li><a href="{{base_path}}">Etusivu</a></li>
             <li><a href="{{base_path}}/reader">Käyttäjät</a></li>
+            {% if not (user_logged_in) %}
             <li><a href="{{base_path}}/reader/login">Kirjaudu sisään</a></li>
+            {% endif %}
+            {% if (user_logged_in) %}
             <li><a href="{{base_path}}/reader/logout">Kirjaudu ulos</a></li>
+            {% endif %}
           </ul>
         </div>
       </div>
     </nav>
 
     <div id="main-container">
-      <!-- Dynaaminen sisältö tulee tähän -->
-      {% block content %}{% endblock %}
+        {{forms.alert_success(message)}}
+        {{forms.alert_error(error)}}
+        {% block content %}{% endblock %}
     </div>
 
     {% block body %}
