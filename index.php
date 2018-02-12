@@ -17,7 +17,12 @@
   // Määritetään sovelluksen juuripolulle vakio BASE_PATH
   define('BASE_PATH', '/' . $base_folder);
 
-  // Luodaan uusi tai palautetaan olemassaoleva sessio
+  define('READER_UPDATE_PATH', '/' . $base_folder . '/reader/update/');
+  
+  define('LOGIN_PATH', '/' . $base_folder . '/reader/login');
+  define('LOGOUT_PATH', '/' . $base_folder . '/reader/logout');
+  
+// Luodaan uusi tai palautetaan olemassaoleva sessio
   if(session_id() == '') {
     session_start();
   }

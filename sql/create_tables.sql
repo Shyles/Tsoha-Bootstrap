@@ -4,6 +4,7 @@ CREATE TABLE Reader(
   password varchar(50) NOT NULL,
   first_name varchar(50) NOT NULL,
   last_name varchar(50) NOT NULL,
+  user_name varchar(50) NOT NULL,
   e_mail varchar(50) NOT NULL,
   moderator boolean DEFAULT FALSE
 );

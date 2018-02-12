@@ -1,0 +1,31 @@
+{% macro destroy_button(action, text) %}
+
+<form method="post" action={{action}} style="display: inline-block;">
+    <button type="submit" class="btn btn-danger">{{text|default('Poista')}}</button>
+</form>
+
+{% endmacro %}
+
+{% macro link_button(action, text) %}
+
+<form action={{action}} style="display: inline-block;">
+    <button type="submit" class="btn btn-primary">{{text|default('Poista')}}</button>
+</form>
+
+{% endmacro %}
+
+{% macro alert_success(message) %}
+    {% if (message)  %}
+        <div class="alert alert-success">
+            {{message}}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro alert_error(error) %}
+    {% if (error)  %}
+        <div class="alert alert-danger">
+            {{error}}
+        </div>
+    {% endif %}
+{% endmacro %}

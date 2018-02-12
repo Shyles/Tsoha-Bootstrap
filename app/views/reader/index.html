@@ -1,16 +1,31 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+
+{{forms.alert_success(message)}}
+
+<h1>Tanssifoorumin käyttäjät</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Käyttäjänimi</th>
+            <th>Etunimi</th>
+            <th>Sukunimi</th>
+            <th>Sähköpostiosoite</th>            
+        </tr>
+    </thead>
+    <tbody>
+        {% for reader in readers %}
+        <tr>
+            <td><a href="{{base_path}}/reader/{{reader.id}}">{{reader.user_name}}</a></td>
+            <td>{{reader.first_name}}</td>
+            <td>{{reader.last_name}}</td>
+            <td>{{reader.e_mail}}</td>
+            <td>
+                {{forms.destroy_button("#{base_path}/reader/#{reader.id}/destroy")}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

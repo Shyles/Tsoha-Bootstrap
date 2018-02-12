@@ -1,3 +1,4 @@
+{% import "macros/forms.html" as forms %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -40,7 +41,9 @@
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
             <li><a href="{{base_path}}">Etusivu</a></li>
-            <li><a href="{{login_path}}">Kirjaudu sisään</a></li>
+            <li><a href="{{base_path}}/reader">Käyttäjät</a></li>
+            <li><a href="{{base_path}}/reader/login">Kirjaudu sisään</a></li>
+            <li><a href="{{base_path}}/reader/logout">Kirjaudu ulos</a></li>
           </ul>
         </div>
       </div>

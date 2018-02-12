@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Muokkaa käyttäjä {{reader.user_name}}</h1>
+
+<form method='post' action='{{base_path}}/reader/{{reader.id}}/update'>
+    <div class="form-group">
+        <label>Käyttäjänimi</label>
+        <input type="text" name="user_name" class="form-control" value={{reader.user_name}}>
+    </div>
+
+    <div class="form-group">
+        <label>Etunimi</label>
+        <input type="text" name="first_name" class="form-control" value={{reader.first_name}}>
+    </div>
+
+    <div class="form-group">
+        <label>Sukunimi</label>
+        <input type="text" name="last_name" class="form-control" value={{reader.last_name}}>
+    </div>
+
+    <div class="form-group">
+        <label>Sähköposti</label>
+        <input type="text" name="e_mail" class="form-control" value={{reader.e_mail}}>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Muokkaa</button>
+    </div>
+</form>
+
+
+<div class="container">
+    <div class="btn-group">
+        {% if reader.moderator %}
+        <button type="button" class="btn btn-default active">Moderaattori</button>
+        {% else %}
+        <button type="button" class="btn btn-default disabled">Moderaattori</button>
+        {% endif %}
+    </div>
+</div>        <button type="submit" class="btn btn-primary">Lisää</button>
+{% endblock %}
