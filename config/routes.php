@@ -8,7 +8,7 @@
       MainController::category();
   });
   
-  $routes->post('/reader/:id/destroy', function($id) {
+  $routes->post('/reader/destroy/:id', function($id) {
     ReaderController::destroy($id);  
   });
   
@@ -49,10 +49,14 @@
   });
 
   $routes->get('/discussion', function() {
-      MainController::discussion();
+      DiscussionController::index();
+  });
+  
+  $routes->get('/discussion/:id', function($id) {
+    DiscussionController::show($id);
   });
 
-  $routes->get('/comment', function() {
+$routes->get('/comment', function() {
       MainController::comment();
   });
   

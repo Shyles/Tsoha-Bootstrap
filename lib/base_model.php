@@ -4,7 +4,7 @@
     // "protected"-attribuutti on käytössä vain luokan ja sen perivien luokkien sisällä
     protected $validators;
 
-    public function __construct($attributes = null, $validators = null){
+    public function __construct($attributes = null){
       // Käydään assosiaatiolistan avaimet läpi
       foreach($attributes as $attribute => $value){
         // Jos avaimen niminen attribuutti on olemassa...
@@ -13,7 +13,6 @@
           $this->{$attribute} = $value;
         }
       }
-      $this->validators = array('validate_first_name', 'validate_last_name', 'validate_user_name', 'validate_e_mail', 'validate_password');;
     }
 
     public function errors(){
@@ -21,20 +20,20 @@
       $errors = array();
         
     foreach($this->validators as $validator){
-        $errors[] = $this->{$validator}();
+        $errors = array_merge($this->{$validator}(), $errors);
     }
 
       return $errors;
     }
     
-    public function validate_string_length($string, $min, $max) {
+    public function validate_string_length($string, $min, $max, $column) {
         $errors = array();
         if ($string == null) {
-                $errors[] = 'Nimi ei saa olla tyhjä!';
+                $errors[] = $column . ' ei saa olla tyhjä!';
         } else if (strlen($string) < $min) {
-                $errors[] = 'Merkkijono on liian lyhyt!';
+                $errors[] = $column . ' on liian lyhyt, sen on oltava vähintään ' . $min . ' merkkiä pitkä!';
         } else if (strlen($string) > $max) {
-                $errors[] = 'Merkkijono on liian pitkä!';
+                $errors[] = $column . ' on liian pitkä, sen on oltava enintään ' . $max . ' merkkiä pitkä!';
         }
         return $errors;
     }

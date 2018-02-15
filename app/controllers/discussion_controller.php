@@ -3,13 +3,15 @@
 class DiscussionController extends BaseController {
 
     public static function index() {
-        $discussions = discussion::all();
+        $discussions = Discussion::all();
         View::make('discussion/index.html', array('discussions' => $discussions));
     }
 
     public static function show($id) {
-        $discussion = discussion::find($id);
-        View::make('discussion/discussion.html', array('discussion' => $discussion));
+        $discussion = Discussion::find($id);
+        $comments = $discussion->comments();
+        Kint::dump($comments);
+        View::make('discussion/show.html', array('discussion' => $discussion, 'comments' => $comments));
     }
 
 }

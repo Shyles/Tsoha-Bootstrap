@@ -30,17 +30,8 @@
     }
 
     public static function sandbox(){
-
-        $reader = new Reader(array(
-            'user_name' => 'D',
-            'first_name' => 's',
-            'last_name' => 'u',
-            'e_mail' => 'j',
-        ));
-        $errors = $reader->errors();
-
-        Kint::dump($errors);
-       // $errors = $reader->errors();
+        $comment = Comment::all_for_discussion(1);
+        Kint::dump($comment);
 
     }
   }

@@ -12,9 +12,18 @@
 
         // Asetetaan näkymään base_path-muuttuja index.php:ssa määritellyllä BASE_PATH vakiolla
         $content['base_path'] = BASE_PATH;
-      
+        $content['reader_path'] = READER_PATH;
+        $content['reader_update_path'] = READER_UPDATE_PATH;
+        $content['reader_destroy_path'] = READER_DESTROY_PATH;
+        $content['reader_new_path'] = READER_NEW_PATH;
+        $content['discussion_path'] = DISCUSSION_PATH;
+        $content['discussion_update_path'] = DISCUSSION_UPDATE_PATH;
+        $content['discussion_destroy_path'] = DISCUSSION_DESTROY_PATH;
+        $content['discussion_new_path'] = DISCUSSION_NEW_PATH;
+        $content['logout_path'] = LOGOUT_PATH;
+        $content['login_path'] = LOGIN_PATH;
 
-        // Asetetaan näkymään kirjautunut käyttäjä, jos get_user_logged_in-metodi on toteutettu
+            // Asetetaan näkymään kirjautunut käyttäjä, jos get_user_logged_in-metodi on toteutettu
         if(method_exists('BaseController', 'get_user_logged_in')){
           $content['user_logged_in'] = BaseController::get_user_logged_in();
         }

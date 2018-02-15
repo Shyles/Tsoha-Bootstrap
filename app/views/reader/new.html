@@ -2,30 +2,30 @@
 {% block content %}
 <h1>Lisää käyttäjä</h1>
 
-<form method='post' action='{{base_path}}/reader'>
+<form method='post' action='{{reader_path}}'>
     <div class="form-group">
         <label>Käyttäjänimi</label>
-        <input type="text" name="user_name" class="form-control">
+        <input type="text" name="user_name" class="form-control" value="{{attributes.user_name}}">
     </div>
     
     <div class="form-group">
         <label>Etunimi</label>
-        <input type="text" name="first_name" class="form-control">
+        <input type="text" name="first_name" class="form-control" value="{{attributes.first_name}}">
     </div>
     
     <div class="form-group">
         <label>Sukunimi</label>
-        <input type="text" name="last_name" class="form-control">
+        <input type="text" name="last_name" class="form-control" value="{{attributes.last_name}}">
     </div>
     
     <div class="form-group">
         <label>Sähköposti</label>
-        <input type="text" name="e_mail" class="form-control">
+        <input type="text" name="e_mail" class="form-control" value="{{attributes.e_mail}}">
     </div>
     
     <div class="form-group">
         <label>Salasana</label>
-        <input type="text" name="password" class="form-control">
+        <input type="text" name="password" class="form-control" value="{{attributes.password}}">
     </div>
     
     <div class="form-group">

@@ -2,6 +2,7 @@
 
 class ReaderController extends BaseController{
     public static function index() {
+        self::check_logged_in();
         $readers = Reader::all();
         View::make('reader/index.html', array('readers' => $readers));
     }
@@ -11,6 +12,7 @@ class ReaderController extends BaseController{
     }
     
     public static function destroy($id) {
+        self::check_logged_in();
         $reader = new Reader(array('id' => $id));
         $result = $reader->destroy($id);
         Redirect::to('/reader', array('message' => 'Käyttäjä on poistettu onnistuneesti!'));
@@ -19,36 +21,39 @@ class ReaderController extends BaseController{
     public static function store() {
         $params = $_POST;
         $attributes = array(
-        'password' => isset($params['password']) ? $params['password'] : 'wololoo',
+        'password' => $params['password'],
         'first_name' => $params['first_name'],
         'last_name' => $params['last_name'],
-        'moderator' => isset($params['moderator']) ? $params('moderator') : false,
         'e_mail' => $params['e_mail'],
         'user_name' => $params['user_name']);
         
         $reader = new Reader($attributes);
-        //$validator_errors = $reader->errors();
-        //if (count($validator_errors) == 0) {
+        Kint::dump($reader);
+        $validator_errors = $reader->errors();
+        if (count($validator_errors) == 0) {
             $reader->save();
             Redirect::to('/reader/' . $reader->id, array('message' => 'käyttäjä ' . $reader->user_name . ' on lisätty kantaan'));
-        //} else {
-        //    View::make('reader/new.html', array('errors' => $validator_errors, 'attributes' => $attributes));
-        //}
+        } else {
+            View::make('reader/new.html', array('validator_errors' => $validator_errors, 'attributes' => $attributes));
+        }
         
     }
     
     public static function show($id) {
         self::check_logged_in();
         $reader = Reader::find($id);
-        View::make('reader/show.html', array('reader' => $reader));
+        $comments = $reader->comments();
+        View::make('reader/show.html', array('reader' => $reader, 'comments' => $comments));
     }
     
     public static function show_update($id) {
+        self::check_logged_in();
         $reader = Reader::find($id);
         View::make('reader/update.html', array('reader' => $reader));
     }
 
     public static function update($id) {
+        self::check_logged_in();
         $params = $_POST;
         $original_reader = Reader::find($id);
         $reader = new Reader(array(

@@ -3,29 +3,29 @@
 class Reader extends BaseModel{
     public $id, $password, $first_name, $last_name, $moderator, $e_mail, $user_name;
 
-    public function _construct($attributes) {
-        $validators = array('validate_first_name', 'validate_last_name', 'validate_user_name', 'validate_e_mail', 'validate_password');
-        parent::_construct($attributes, $validators);
+    public function __construct($attributes) {
+        parent::__construct($attributes);
+        $this->validators = array('validate_first_name', 'validate_last_name', 'validate_user_name', 'validate_e_mail', 'validate_password');
     }
     
     public function validate_first_name() {
-        return $this->validate_string_length($this->first_name, 3, 20);
+        return $this->validate_string_length($this->first_name, 3, 20, 'etunimi');
     }
 
     public function validate_last_name() {
-        return $this->validate_string_length($this->last_name, 3, 20);
+        return $this->validate_string_length($this->last_name, 3, 20, 'sukunimi');
     }
 
     public function validate_user_name() {
-        return $this->validate_string_length($this->user_name, 3, 20);
+        return $this->validate_string_length($this->user_name, 3, 20, 'käyttäjäni');
     }
     
     public function validate_e_mail() {
-        return $this->validate_string_length($this->first_name, 3, 20);
+        return $this->validate_string_length($this->first_name, 3, 20, 'sähköposti');
     }
     
     public function validate_password() {
-        return $this->validate_string_length($this->first_name, 3, 20);
+        return $this->validate_string_length($this->first_name, 3, 20, 'salasana');
     }
 
     public static function all() {
@@ -98,5 +98,9 @@ class Reader extends BaseModel{
         } else {
             return null;
         }
+    }
+    
+    public function comments() {
+        return Comment::all_for_reader($this->id);
     }
 }

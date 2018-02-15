@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-{{forms.alert_success(message)}}
-
 <h1>Tanssifoorumin käyttäjät</h1>
 
 <table class="table table-striped table-bordered">
@@ -22,7 +20,7 @@
             <td>{{reader.last_name}}</td>
             <td>{{reader.e_mail}}</td>
             <td>
-                {{forms.destroy_button("#{base_path}/reader/#{reader.id}/destroy")}}
+                {{forms.destroy_button("#{reader_destroy_path}#{reader.id}")}}
             </td>
         </tr>
         {% endfor %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{discussion.topic}}</h1>
+
+<table class="table table-striped table-bordered">
+
+    <tbody>
+        
+        {% for comment in comments %}
+        <tr>
+            <td>
+                <a href={{"#{READER_PATH}/#{comment.reader_id}"}}>{{comment.username}}</a>
+                <br>
+                Julkaistu {{comment.published}}
+            </td>
+            <td>{{comment.comment}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -2,11 +2,17 @@
 {% block content %}
 <h1>Muokkaa käyttäjä {{reader.user_name}}</h1>
 
-<form method='post' action='{{base_path}}/reader/{{reader.id}}/update'>
+<form method='post' action='{{reader_update_path}}{{reader.id}}'>
     <div class="form-group">
         <label>Käyttäjänimi</label>
         <input type="text" name="user_name" class="form-control" value={{reader.user_name}}>
     </div>
+    
+    {% if reader.moderator %}
+    <div class="btn-group">
+        <button type="button" class="btn btn-default" data-toggle="button" name="moderator">Moderaattori</button>
+    </div>
+    {% endif %}
 
     <div class="form-group">
         <label>Etunimi</label>
@@ -27,15 +33,4 @@
         <button type="submit" class="btn btn-primary">Muokkaa</button>
     </div>
 </form>
-
-
-<div class="container">
-    <div class="btn-group">
-        {% if reader.moderator %}
-        <button type="button" class="btn btn-default active">Moderaattori</button>
-        {% else %}
-        <button type="button" class="btn btn-default disabled">Moderaattori</button>
-        {% endif %}
-    </div>
-</div>        <button type="submit" class="btn btn-primary">Lisää</button>
 {% endblock %}

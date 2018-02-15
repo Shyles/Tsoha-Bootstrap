@@ -16,9 +16,14 @@
 
   // Määritetään sovelluksen juuripolulle vakio BASE_PATH
   define('BASE_PATH', '/' . $base_folder);
-
-  define('READER_UPDATE_PATH', '/' . $base_folder . '/reader/update/');
-  
+  define('READER_PATH', BASE_PATH . '/reader');
+  define('READER_UPDATE_PATH', READER_PATH . '/update/');
+  define('READER_DESTROY_PATH', READER_PATH . '/destroy/');
+  define('READER_NEW_PATH', READER_PATH . '/new');
+  define('DISCUSSION_PATH', BASE_PATH . '/discussion');
+  define('DISCUSSION_UPDATE_PATH', DISCUSSION_PATH . '/update/');
+  define('DISCUSSION_DESTROY_PATH', DISCUSSION_PATH . '/destroy/');
+  define('DISCUSSION_NEW_PATH', DISCUSSION_PATH . '/new');
   define('LOGIN_PATH', '/' . $base_folder . '/reader/login');
   define('LOGOUT_PATH', '/' . $base_folder . '/reader/logout');
   

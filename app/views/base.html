@@ -41,12 +41,13 @@
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
             <li><a href="{{base_path}}">Etusivu</a></li>
-            <li><a href="{{base_path}}/reader">Käyttäjät</a></li>
+            <li><a href="{{reader_path}}">Käyttäjät</a></li>
             {% if not (user_logged_in) %}
-            <li><a href="{{base_path}}/reader/login">Kirjaudu sisään</a></li>
+            <li><a href="{{login_path}}">Kirjaudu sisään</a></li>
+            <li><a href="{{reader_new_path}}">Rekisteröidy</a></li>
             {% endif %}
             {% if (user_logged_in) %}
-            <li><a href="{{base_path}}/reader/logout">Kirjaudu ulos</a></li>
+            <li><a href="{{logout_path}}">Kirjaudu ulos</a></li>
             {% endif %}
           </ul>
         </div>
@@ -56,6 +57,7 @@
     <div id="main-container">
         {{forms.alert_success(message)}}
         {{forms.alert_error(error)}}
+        {{forms.alert_validator_errors(validator_errors)}}
         {% block content %}{% endblock %}
     </div>
 

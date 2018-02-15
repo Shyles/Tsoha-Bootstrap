@@ -29,3 +29,15 @@
         </div>
     {% endif %}
 {% endmacro %}
+
+{% macro alert_validator_errors(validator_errors) %}
+    {% if validator_errors %}
+    <div class="alert alert-danger">
+            <ul>
+                {% for validator_error in validator_errors %}
+                <li>{{validator_error}}</li>
+                {% endfor %}
+            </ul>
+    </div>
+    {% endif %}
+{% endmacro %}

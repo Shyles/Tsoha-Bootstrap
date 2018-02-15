@@ -8,8 +8,9 @@ class Discussion extends BaseModel {
         parent::_construct($attributes);
     }
 
-    public static function all() {
-        $query = DB::connection()->prepare('SELECT * FROM discussion');
+    private static function all_base($sql, $id = false) {
+        $query = DB::connection();
+        $id ? $query->prepare(array('id' => $id)) : $query->prepare($sql);
         $query->execute();
         $rows = $query->fetchAll();
         $discussions = array();
@@ -25,6 +26,14 @@ class Discussion extends BaseModel {
             ));
         }
         return $discussions;
+    }
+    
+    public static function all() {
+        return Discussion::all_base('SELECT * FROM Discussion');
+    }
+    
+    public static function all_for_topic($id) {
+        return Discussion::all_base('SELECT * FROM Discussion WHERE topic_id = :id', $id);
     }
 
     public static function find($id) {
@@ -44,6 +53,10 @@ class Discussion extends BaseModel {
             return $discussion;
         }
         return null;
+    }
+  
+    public function comments() {
+        return Comment::all_for_discussion($this->id);
     }
 
 }
