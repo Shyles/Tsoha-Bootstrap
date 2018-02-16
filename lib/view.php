@@ -10,7 +10,7 @@
         // Asetetaan uudelleenohjauksen yhteydessä lisätty viesti
         self::set_flash_message($content);
 
-        // Asetetaan näkymään base_path-muuttuja index.php:ssa määritellyllä BASE_PATH vakiolla
+        // Asetetaan näkyiin yleisiä polkumuuttujia
         $content['base_path'] = BASE_PATH;
         $content['reader_path'] = READER_PATH;
         $content['reader_update_path'] = READER_UPDATE_PATH;
@@ -20,6 +20,10 @@
         $content['discussion_update_path'] = DISCUSSION_UPDATE_PATH;
         $content['discussion_destroy_path'] = DISCUSSION_DESTROY_PATH;
         $content['discussion_new_path'] = DISCUSSION_NEW_PATH;
+        $content['comment_path'] = COMMENT_PATH;
+        $content['comment_update_path'] = COMMENT_UPDATE_PATH;
+        $content['comment_destroy_path'] = COMMENT_DESTROY_PATH;
+        $content['comment_new_path'] = COMMENT_NEW_PATH;
         $content['logout_path'] = LOGOUT_PATH;
         $content['login_path'] = LOGIN_PATH;
 

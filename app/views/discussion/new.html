@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Luo uusi keskustelu</h1>
+
+<form method='post' action='{{discussion_path}}'>
+    <div class="form-group">
+        <label>Aihe</label>
+        <input type="text" name="topic" class="form-control" value="{{attributes.topic}}">
+    </div>
+
+    <div class="form-group">
+        <label>Aihe</label>
+        <select class="form-control" name="topic_id">
+            {% for topic in topics %}
+            <option value="{{topic.id}}">{{topic.topic}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <input type="hidden" name="reader_id" value="{{user_logged_in.id}}">
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+</form>
+{% endblock %}

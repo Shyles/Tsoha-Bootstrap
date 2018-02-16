@@ -24,6 +24,10 @@
   define('DISCUSSION_UPDATE_PATH', DISCUSSION_PATH . '/update/');
   define('DISCUSSION_DESTROY_PATH', DISCUSSION_PATH . '/destroy/');
   define('DISCUSSION_NEW_PATH', DISCUSSION_PATH . '/new');
+  define('COMMENT_PATH', BASE_PATH . '/comment');
+  define('COMMENT_UPDATE_PATH', COMMENT_PATH . '/update/');
+  define('COMMENT_DESTROY_PATH', COMMENT_PATH . '/destroy/');
+  define('COMMENT_NEW_PATH', COMMENT_PATH . '/new');
   define('LOGIN_PATH', '/' . $base_folder . '/reader/login');
   define('LOGOUT_PATH', '/' . $base_folder . '/reader/logout');
   

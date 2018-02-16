@@ -9,6 +9,13 @@ class Comment extends BaseModel {
         parent::_construct($attributes);
     }
     
+    public static function save() {
+        $query = DB::connection();
+        $query->prepare('INSERT INTO Comment (discussion_id, reader_id, comment, published) VALUES (:discussion_id, :reader_id, :comment, :published) RETURNING ID');
+        $query->execute;
+        return $query->fetch();
+    }
+    
     public static function find($id) {
         $query = DB::connection()->prepare(self::$base_sql . 'WHERE c.id = :id LIMIT 1');
         $query->execute(array('id' => $id));

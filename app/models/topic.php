@@ -1,7 +1,7 @@
 <?php
 
 class Topic extends BaseModel {
-    public $id, $topic;
+    public $id, $topic, $discussions;
     
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -15,15 +15,17 @@ class Topic extends BaseModel {
         $topics = array();
 
         foreach ($rows as $row) {
-            $topics[] = new Topic(array(
+            $topic = new Topic(array(
                 'id' => $row['id'],
                 'topic' => $row['topic']
             ));
+            $topic->discussions = $topic->discussions();
+            $topics[] = $topic;
         }
         return $topics;
     }
     
-    public static function discussions() {
-        Comment::all_for_discussion($this->id);
+    public function discussions() {
+        Discussion::all_for_topic($this->id);
     }
 }

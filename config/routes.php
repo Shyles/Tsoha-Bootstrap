@@ -52,15 +52,23 @@
       DiscussionController::index();
   });
   
+  $routes->get('/discussion/new', function() {
+      DiscussionController::create(); 
+  });
+  
   $routes->get('/discussion/:id', function($id) {
     DiscussionController::show($id);
   });
-
-$routes->get('/comment', function() {
-      MainController::comment();
+  
+  $routes->post('/discussion', function() {
+    DiscussionController::store();
   });
   
+  $routes->post('/comment', function($id) {
+    CommentController::create($id);
+  });
 
-$routes->get('/hiekkalaatikko', function() {
+
+  $routes->get('/hiekkalaatikko', function() {
       MainController::sandbox();
   });

@@ -28,11 +28,14 @@ class ReaderController extends BaseController{
         'user_name' => $params['user_name']);
         
         $reader = new Reader($attributes);
-        Kint::dump($reader);
         $validator_errors = $reader->errors();
         if (count($validator_errors) == 0) {
             $reader->save();
-            Redirect::to('/reader/' . $reader->id, array('message' => 'käyttäjä ' . $reader->user_name . ' on lisätty kantaan'));
+            if (isset($_SESSION['user'])) {
+                Redirect::to('/reader/' . $reader->id, array('message' => 'Käyttäjä ' . $reader->user_name . ' on lisätty kantaan'));
+            } else {
+                Redirect::to('/reader/login', array('message' => 'Käyttäjä ' . $reader->user_name . ' on lisätty kantaan. Voit nyt kirjautua sisään!'));
+            }
         } else {
             View::make('reader/new.html', array('validator_errors' => $validator_errors, 'attributes' => $attributes));
         }
@@ -76,7 +79,6 @@ class ReaderController extends BaseController{
     public static function login() {
         $params = $_POST;
         $reader = Reader::authenticate($params['password'], $params['username']);
-        
         if ($reader) {
             $_SESSION['user'] = $reader->id;
             Redirect::to('/', array('message' => 'Tervetuloa takaisin ' . $reader->user_name . '!'));
