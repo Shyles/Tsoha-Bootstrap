@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h1><a href="{{topic_update_path}}{{topic.id}}">{{topic.topic}}</a></h1>
+
+{{forms.show_discussions(topic)}}
+
+{% endblock %}

@@ -4,7 +4,7 @@
 
 <form method='post' action='{{discussion_path}}'>
     <div class="form-group">
-        <label>Aihe</label>
+        <label>Otsikko</label>
         <input type="text" name="topic" class="form-control" value="{{attributes.topic}}">
     </div>
 
@@ -15,6 +15,11 @@
             <option value="{{topic.id}}">{{topic.topic}}</option>
             {% endfor %}
         </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Kommentti</label>
+        <input class="form-control" type="text" name="comment">
     </div>
     
     <div class="form-group">

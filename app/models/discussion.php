@@ -2,10 +2,15 @@
 
 class Discussion extends BaseModel {
 
-    public $id, $reader_id, $topic_id, $topic, $locked, $published;
+    public $id, $reader_id, $topic_id, $topic, $locked, $published, $username;
 
     public function _construct($attributes) {
         parent::_construct($attributes);
+        $this->validators = array('validate_topic');
+    }
+    
+    public  function validate_topic() {
+        return $this->validate_string_length($this->topic, 5, 100, 'otsikko');
     }
 
     private static function all_base($sql, $id = false) {
@@ -21,7 +26,8 @@ class Discussion extends BaseModel {
                 'topic_id' => $row['topic_id'],
                 'topic' => $row['topic'],
                 'locked' => $row['locked'],
-                'published' => $row['published']
+                'published' => $row['published'],
+                'username' => isset($row['username']) ? $row['username'] : ''
             ));
         }
         return $discussions;
@@ -32,7 +38,7 @@ class Discussion extends BaseModel {
     }
     
     public static function all_for_topic($id) {
-        return Discussion::all_base('SELECT * FROM Discussion WHERE topic_id = :id', $id);
+        return Discussion::all_base('SELECT d.id, d.reader_id, d.topic_id, d.topic, d.locked, d.published, r.user_name as username FROM Discussion as d JOIN Reader as r ON d.reader_id = r.id  WHERE topic_id = :id', $id);
     }
 
     public static function find($id) {
@@ -59,7 +65,7 @@ class Discussion extends BaseModel {
     }
     
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Discussion (topic, reader_id, topic_id) VALUES (:topic, :reader_id, :topic_id) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Discussion (topic, reader_id, topic_id, published) VALUES (:topic, :reader_id, :topic_id, now()) RETURNING id');
         $query->execute(array('topic' => $this->topic, 'reader_id' => $this->reader_id, 'topic_id' => $this->topic_id));
         $row = $query->fetch();
         $this->id = $row['id'];

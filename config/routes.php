@@ -1,7 +1,7 @@
 <?php
     
   $routes->get('/', function() {
-    MainController::index();
+      DiscussionController::index();
   });
   
   $routes->get('/category', function() {
@@ -64,11 +64,42 @@
     DiscussionController::store();
   });
   
-  $routes->post('/comment', function($id) {
-    CommentController::create($id);
+  $routes->post('/comment/new', function() {
+    CommentController::create();
+  });
+  
+  $routes->post('/reader_topic', function() {
+      ReaderTopicController::store(); 
   });
 
+  $routes->post('/reader_topic/destroy/:id', function($id) {
+    ReaderTopicController::destroy($id);
+  });
 
   $routes->get('/hiekkalaatikko', function() {
       MainController::sandbox();
+  });
+  
+  $routes->get('/topic/new', function() {
+      TopicController::create();
+  });
+  
+  $routes->get('/topic/:id', function($id) {
+    TopicController::show($id);
+  });
+  
+  $routes->get('/topic/update/:id', function($id) {
+    TopicController::show_update($id);
+  });
+  
+  $routes->post('/topic/update/:id', function($id) {
+    TopicController::update($id);
+  });
+
+  $routes->post('/topic', function() {
+      TopicController::store();
+  });
+  
+  $routes->get('/topic', function() {
+    TopicController::index();
   });

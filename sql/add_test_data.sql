@@ -8,6 +8,11 @@ INSERT INTO Reader (user_name,first_name, last_name, e_mail, password, moderator
 INSERT INTO Topic (topic) VALUES ('Swing');
 INSERT INTO Topic (topic) VALUES ('Random');
 
+-- ReaderTopics
+INSERT INTO ReaderTopic (reader_id, topic_id) VALUES (1,1);
+INSERT INTO ReaderTopic (reader_id, topic_id) VALUES (2,1);
+INSERT INTO ReaderTopic (reader_id, topic_id) VALUES (1,2);
+
 -- Discussions
 INSERT INTO Discussion (published, reader_id, topic, topic_id) VALUES (NOW(), 1, 'Tanssiminen on kivaa', 1);
 INSERT INTO Discussion (published, reader_id, topic, topic_id) VALUES (NOW(), 2, 'Tanssiminen on tylsää', 2);

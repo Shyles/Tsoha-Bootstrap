@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Lisää keskustelunaihe</h1>
+
+<form method='post' action='{{topic_path}}'>
+    <div class="form-group">
+        <label>Aihe</label>
+        <input type="text" name="topic" class="form-control" >
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+</form>
+{% endblock %}

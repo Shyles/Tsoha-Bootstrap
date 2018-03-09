@@ -31,3 +31,8 @@ CREATE TABLE Comment(
   published DATE
 );
 
+CREATE TABLE ReaderTopic(
+  id SERIAL PRIMARY KEY,
+  reader_id INTEGER REFERENCES Reader(id),
+  topic_id INTEGER REFERENCES Topic(id)
+);

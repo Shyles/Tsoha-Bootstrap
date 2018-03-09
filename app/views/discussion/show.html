@@ -4,6 +4,10 @@
 
 <table class="table table-striped table-bordered">
 
+    <thead>
+        <th></th>
+        <th>Kommentti</th>
+    </thead>    
     <tbody>
         
         {% for comment in comments %}
@@ -20,6 +24,18 @@
 </table>
 
 <form action="{{comment_new_path}}" method="POST">
-    
+    <div class="form-group">
+        <label>Kommentti</label>
+        <input type="textarea" name="comment" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="hidden" name="reader_id" value="{{user_logged_in.id}}">
+    </div>
+    <div class="form-group">
+        <input type="hidden" name="discussion_id" value="{{discussion.id}}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Kommentoi</button>
+    </div>
 </form>
 {% endblock %}

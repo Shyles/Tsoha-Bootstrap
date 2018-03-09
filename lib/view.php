@@ -24,10 +24,16 @@
         $content['comment_update_path'] = COMMENT_UPDATE_PATH;
         $content['comment_destroy_path'] = COMMENT_DESTROY_PATH;
         $content['comment_new_path'] = COMMENT_NEW_PATH;
+        $content['topic_path'] = TOPIC_PATH;
+        $content['topic_update_path'] = TOPIC_UPDATE_PATH;
+        $content['topic_destroy_path'] = TOPIC_DESTROY_PATH;
+        $content['topic_new_path'] = TOPIC_NEW_PATH;
+        $content['reader_topic_path'] = READER_TOPIC_PATH;
+        $content['reader_topic_new_path'] = READER_TOPIC_NEW_PATH;
+        $content['reader_topic_destroy_path'] = READER_TOPIC_DESTROY_PATH;
         $content['logout_path'] = LOGOUT_PATH;
         $content['login_path'] = LOGIN_PATH;
 
-            // Asetetaan näkymään kirjautunut käyttäjä, jos get_user_logged_in-metodi on toteutettu
         if(method_exists('BaseController', 'get_user_logged_in')){
           $content['user_logged_in'] = BaseController::get_user_logged_in();
         }

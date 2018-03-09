@@ -3,8 +3,8 @@
   class MainController extends BaseController{
 
     public static function index(){
-      // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-        View::make('home.html');
+        $topics = isset($_SESSION['user']) ? Topic::all_for_reader(self::get_user_logged_in()->id) :Topic::all();
+        View::make('discussion/index.html', array('topics' => $topics));
     }
     
     public static function category() {

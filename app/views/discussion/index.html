@@ -1,31 +1,37 @@
-{% extends base.html %}
+{% extends "base.html" %}
 {% block content %}
 
-<table class="table table-striped table-bordered">
+<h1>Keskustelupalsta</h1>
 
-    <h1>Tanssifoorumi!</h1>
-    <thead>
-    <th>Swing tanssit</th>
-</thead>
-<tbody>
-    <tr>
-        <td>
-            <a href="http://laol.users.cs.helsinki.fi/tsoha/discussion">Eka keskustelu</a>
-            <br>
-            Julkaistu 28.01.2018
-        </td>
-        <td>Keskustelun aihe</td>
-    </tr>
-    <tr>
-        <td>
-            <a href="http://laol.users.cs.helsinki.fi/tsoha/discussion">toka keskustelu</a>
-            <br>
-            Julkaistu 28.01.2018
-        </td>
-        <td>Tokan keskustelun aihe</td>
-    </tr>
-</tbody>
-</table>
+{% if (user_logged_in) %}
+    <h4>Tilaa uusi aihe</h4>
+    <div>
+        <form method='post' action='{{reader_topic_path}}' id="topic_form">
+            <div class="form-group">
+                <input type="hidden" name="reader_id" value="{{user_logged_in.id}}">
+                <label>Aihe</label>
+                <select class="form-control" name="topic_id">
+                    {% for topic in remaining_topics %}
+                    <option value="{{topic.id}}">{{topic.topic}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-primary" from="topic_form">Tilaa</button>
+        {{forms.link_button(topic_new_path, "Luo uusi aihe")}}
+    </div>
+{% endif %}
 
+{% for topic in topics %}
+<h2>
+    {{topic.topic}}
+    {{forms.destroy_button("#{reader_topic_destroy_path}#{topic.reader_topic_id}", "Poista tilaus")}}
+</h2>
+
+
+
+{{forms.show_discussions(topic)}}
+{{forms.link_button(discussion_new_path, "Aloita uusi keskustelu")}}
+{% endfor %}
 {% endblock %}
 

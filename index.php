@@ -28,6 +28,13 @@
   define('COMMENT_UPDATE_PATH', COMMENT_PATH . '/update/');
   define('COMMENT_DESTROY_PATH', COMMENT_PATH . '/destroy/');
   define('COMMENT_NEW_PATH', COMMENT_PATH . '/new');
+  define('TOPIC_PATH', BASE_PATH . '/topic');
+  define('TOPIC_UPDATE_PATH', TOPIC_PATH . '/update/');
+  define('TOPIC_DESTROY_PATH', TOPIC_PATH . '/destroy/');
+  define('TOPIC_NEW_PATH', TOPIC_PATH . '/new');
+  define('READER_TOPIC_PATH', BASE_PATH . '/reader_topic');
+  define('READER_TOPIC_NEW_PATH', READER_TOPIC_PATH . '/new');
+  define('READER_TOPIC_DESTROY_PATH', READER_TOPIC_PATH . '/destroy/');
   define('LOGIN_PATH', '/' . $base_folder . '/reader/login');
   define('LOGOUT_PATH', '/' . $base_folder . '/reader/logout');
   

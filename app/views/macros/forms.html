@@ -43,3 +43,24 @@
     </div>
     {% endif %}
 {% endmacro %}
+
+{% macro show_discussions(topic) %}
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Keskustelun nimi</th>
+                <th>Käyttäjä</th>
+                <th>Julkaistu</th>        
+            </tr>
+        </thead>
+        <tbody>
+            {% for discussion in topic.discussions %}
+            <tr>
+                <td><a href="{{base_path}}/discussion/{{discussion.id}}">{{discussion.topic}}</a></td>
+                <td><a href="{{reader_path}}/{{discussion.reader_id}}">{{discussion.username}}</a></td>
+                <td>{{discussion.published}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}

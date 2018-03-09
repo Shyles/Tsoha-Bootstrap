@@ -1,18 +1,22 @@
 <?php
 
 class Comment extends BaseModel {
-    public $id, $discussion_id, $comment, $published, $discussion_topic, $username;
+    public $id, $discussion_id, $comment, $published, $discussion_topic, $username, $reader_id;
 
     public static $base_sql = 'SELECT c.id, c.discussion_id, c.comment, c.published, d.topic as discussion_topic, r.user_name as username  FROM Comment as c JOIN Discussion as d ON c.discussion_id = d.id JOIN Reader as r ON c.reader_id = r.id ';
     
     public function _construct($attributes) {
         parent::_construct($attributes);
+        $this->validators = array('validate_comment');
     }
     
-    public static function save() {
-        $query = DB::connection();
-        $query->prepare('INSERT INTO Comment (discussion_id, reader_id, comment, published) VALUES (:discussion_id, :reader_id, :comment, :published) RETURNING ID');
-        $query->execute;
+    public function validate_comment() {
+        return $this->validate_string_length($this->comment, 0, 1000, 'kommentti');
+    }
+    
+    public function save() {
+        $query = DB::connection()->prepare('INSERT INTO Comment (discussion_id, reader_id, comment, published) VALUES (:discussion_id, :reader_id, :comment, now()) RETURNING ID');
+        $query->execute(array('discussion_id' => $this->discussion_id, 'reader_id' => $this->reader_id, 'comment' => $this->comment));
         return $query->fetch();
     }
     
